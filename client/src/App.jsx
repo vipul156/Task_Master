@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TaskList from './components/TaskList';
 import TaskForm from './components/TaskForm';
 
-const API_BASE = 'http://localhost:5000/api/tasks';
+const API_BASE = `${import.meta.env.VITE_API_BASE}/api/tasks` || 'http://localhost:5000/api/tasks';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -119,8 +119,8 @@ function App() {
               setShowForm(!showForm);
             }}
             className={`px-6 py-3 rounded-xl font-semibold shadow-lg transition-all active:scale-95 flex items-center gap-2 ${showForm
-                ? 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'
-                : 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-indigo-200'
+              ? 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'
+              : 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-indigo-200'
               }`}
           >
             {showForm ? 'Cancel' : (
